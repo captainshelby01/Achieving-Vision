@@ -30,6 +30,12 @@ class BlogIndex extends Component
         $this->resetPage();
     }
 
+    public function clearFilters(): void
+    {
+        $this->reset(['search', 'selectedCategory']);
+        $this->resetPage();
+    }
+
     public function render()
     {
         $categories = Category::withCount(['posts' => function ($query) {
