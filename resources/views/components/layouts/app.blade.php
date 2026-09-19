@@ -42,11 +42,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
+    <style>[x-cloak] { display: none !important; }</style>
 </head>
 <body class="bg-[#FBF9F4] text-[#061A40] font-sans antialiased selection:bg-[#EAC435] selection:text-[#061A40] flex flex-col min-h-screen">
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 bg-[#FBF9F4]/90 backdrop-blur-md border-b border-[#E5DFC9]/60">
+    <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-50 bg-[#FBF9F4]/95 backdrop-blur-md border-b border-[#E5DFC9]/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Wordmark Logo -->
             <a href="{{ route('home') }}" class="group flex items-center gap-2">
@@ -82,12 +83,84 @@
             </div>
 
             <!-- Mobile Menu Toggle Button -->
-            <div class="md:hidden flex items-center" x-data="{ open: false }">
-                <button @click="open = !open" class="p-2 rounded-lg text-[#061A40] hover:bg-[#E5DFC9]/40 focus:outline-none" aria-label="Toggle Navigation">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="md:hidden flex items-center">
+                <button 
+                    @click="mobileMenuOpen = !mobileMenuOpen" 
+                    :aria-expanded="mobileMenuOpen"
+                    class="p-2 rounded-lg text-[#061A40] hover:bg-[#E5DFC9]/40 focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]/30 transition" 
+                    aria-label="Toggle Navigation"
+                >
+                    <!-- Hamburger Icon (when closed) -->
+                    <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
+                    <!-- Close Icon (when open) -->
+                    <svg x-show="mobileMenuOpen" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div 
+            x-show="mobileMenuOpen" 
+            x-cloak
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            @click.away="mobileMenuOpen = false"
+            class="md:hidden bg-[#FBF9F4] border-b border-[#E5DFC9] shadow-xl px-4 pt-3 pb-6 space-y-3"
+        >
+            <div class="flex flex-col space-y-2 font-medium text-base">
+                <a 
+                    href="{{ route('home') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="px-3 py-2.5 rounded-lg transition-colors {{ request()->routeIs('home') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/30' }}"
+                >
+                    Home
+                </a>
+                <a 
+                    href="{{ route('blog.index') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="px-3 py-2.5 rounded-lg transition-colors {{ request()->routeIs('blog.*') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/30' }}"
+                >
+                    Articles & Blog
+                </a>
+                <a 
+                    href="{{ route('about') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="px-3 py-2.5 rounded-lg transition-colors {{ request()->routeIs('about') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/30' }}"
+                >
+                    About Oghale
+                </a>
+                <a 
+                    href="{{ route('events') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="px-3 py-2.5 rounded-lg transition-colors {{ request()->routeIs('events') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/30' }}"
+                >
+                    Events
+                </a>
+                <a 
+                    href="{{ route('contact') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="px-3 py-2.5 rounded-lg transition-colors {{ request()->routeIs('contact') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/30' }}"
+                >
+                    Contact
+                </a>
+            </div>
+
+            <div class="pt-2 border-t border-[#E5DFC9]/60">
+                <a 
+                    href="{{ route('newsletter') }}" 
+                    @click="mobileMenuOpen = false"
+                    class="btn-primary w-full text-center text-sm py-3 justify-center shadow-sm"
+                >
+                    Join Inner Circle
+                </a>
             </div>
         </div>
     </header>
