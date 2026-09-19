@@ -9,6 +9,7 @@ use App\Filament\Resources\Subscribers\Schemas\SubscriberForm;
 use App\Filament\Resources\Subscribers\Tables\SubscribersTable;
 use App\Models\Subscriber;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,7 +19,11 @@ class SubscriberResource extends Resource
 {
     protected static ?string $model = Subscriber::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Audience & Community';
+
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $recordTitleAttribute = 'email';
 
