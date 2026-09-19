@@ -37,4 +37,14 @@ class LegalPagesTest extends TestCase
                  ->assertSee('What You Can Expect Every Week')
                  ->assertSee('Zero Fluff & Zero Ads', false);
     }
+
+    public function test_it_renders_xml_sitemap(): void
+    {
+        $response = $this->get('/sitemap.xml');
+
+        $response->assertStatus(200)
+                 ->assertHeader('Content-Type', 'application/xml')
+                 ->assertSee('<urlset', false)
+                 ->assertSee('<loc>', false);
+    }
 }

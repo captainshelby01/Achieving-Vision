@@ -47,3 +47,44 @@ Route::get('/privacy', function () {
 Route::get('/terms', function () {
     return view('terms');
 })->name('terms');
+
+Route::get('/sitemap.xml', function () {
+    $posts = Post::published()->orderBy('published_at', 'desc')->get();
+    
+    $staticUrls = [
+        ['loc' => route('home'), 'priority' => '1.0', 'changefreq' => 'daily'],
+        ['loc' => route('blog.index'), 'priority' => '0.9', 'changefreq' => 'daily'],
+        ['loc' => route('about'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+        ['loc' => route('events'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+        ['loc' => route('newsletter'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+        ['loc' => route('contact'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+        ['loc' => route('privacy'), 'priority' => '0.3', 'changefreq' => 'yearly'],
+        ['loc' => route('terms'), 'priority' => '0.3', 'changefreq' => 'yearly'],
+    ];
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    
+    foreach ($staticUrls as $url) {
+        $xml .= '<url>';
+        $xml .= '<loc>' . htmlspecialchars($url['loc']) . '</loc>';
+        $xml .= '<changefreq>' . $url['changefreq'] . '</changefreq>';
+        $xml .= '<priority>' . $url['priority'] . '</priority>';
+        $xml .= '</url>';
+    }
+
+    foreach ($posts as $post) {
+        $xml .= '<url>';
+        $xml .= '<loc>' . htmlspecialchars(route('blog.show', $post->slug)) . '</loc>';
+        $xml .= '<lastmod>' . $post->updated_at->toAtomString() . '</lastmod>';
+        $xml .= '<changefreq>weekly</changefreq>';
+        $xml .= '<priority>0.8</priority>';
+        $xml .= '</url>';
+    }
+
+    $xml .= '</urlset>';
+
+    return response($xml, 200, [
+        'Content-Type' => 'application/xml',
+    ]);
+})->name('sitemap');
