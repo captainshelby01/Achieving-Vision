@@ -76,7 +76,7 @@ Route::get('/sitemap.xml', function () {
     foreach ($posts as $post) {
         $xml .= '<url>';
         $xml .= '<loc>' . htmlspecialchars(route('blog.show', $post->slug)) . '</loc>';
-        $xml .= '<lastmod>' . $post->updated_at->toAtomString() . '</lastmod>';
+        $xml .= '<lastmod>' . ($post->updated_at ? $post->updated_at->toAtomString() : now()->toAtomString()) . '</lastmod>';
         $xml .= '<changefreq>weekly</changefreq>';
         $xml .= '<priority>0.8</priority>';
         $xml .= '</url>';
