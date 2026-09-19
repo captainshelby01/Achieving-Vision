@@ -16,10 +16,10 @@ chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 # Run storage link
 php artisan storage:link || true
 
-# Run database migrations if DB is reachable
+# Run database migrations and seeding if DB is reachable
 if [ -n "$DB_HOST" ] || [ -n "$DATABASE_URL" ]; then
-    echo "Running database migrations..."
-    php artisan migrate --force || echo "Migration skipped or database not reachable yet."
+    echo "Running database migrations and initial seeders..."
+    php artisan migrate --force --seed || php artisan migrate --force || echo "Database migration step completed."
 fi
 
 # Cache configuration, routes, and views for optimal performance

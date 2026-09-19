@@ -20,12 +20,15 @@ RUN apk add --no-cache \
     zip \
     unzip \
     icu-dev \
-    oniguruma-dev
+    oniguruma-dev \
+    postgresql-dev
 
-# Install PHP extensions required by Laravel & Filament
+# Install PHP extensions required by Laravel & Filament (supports MySQL & PostgreSQL)
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
+    pdo_pgsql \
+    pgsql \
     bcmath \
     gd \
     intl \
