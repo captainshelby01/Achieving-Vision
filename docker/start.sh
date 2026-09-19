@@ -20,6 +20,8 @@ php artisan storage:link || true
 if [ -n "$DB_HOST" ] || [ -n "$DATABASE_URL" ]; then
     echo "Running database migrations and initial seeders..."
     php artisan migrate --force --seed || php artisan migrate --force || echo "Database migration step completed."
+    echo "Ensuring Admin credentials..."
+    php artisan app:ensure-admin || true
 fi
 
 # Cache configuration, routes, and views for optimal performance

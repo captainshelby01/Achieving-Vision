@@ -17,11 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $author = User::firstOrCreate(
+        $author = User::updateOrCreate(
             ['email' => 'oghale@achievewithoghale.com'],
             [
                 'name' => 'Oghale',
-                'password' => bcrypt('password123'),
+                'password' => 'password123',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'admin@achievewithoghale.com'],
+            [
+                'name' => 'Admin Oghale',
+                'password' => 'password123',
             ]
         );
 

@@ -40,6 +40,11 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    public function setEmailAttribute(string $value): void
+    {
+        $this->attributes['email'] = strtolower(trim($value));
+    }
+
     /**
      * Get the attributes that should be cast.
      *
