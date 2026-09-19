@@ -70,4 +70,31 @@ class AdminPanelTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_author_can_view_categories_resource(): void
+    {
+        $author = User::factory()->create();
+
+        $response = $this->actingAs($author)->get('/admin/categories');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_author_can_view_tags_resource(): void
+    {
+        $author = User::factory()->create();
+
+        $response = $this->actingAs($author)->get('/admin/tags');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_author_can_view_create_post_page(): void
+    {
+        $author = User::factory()->create();
+
+        $response = $this->actingAs($author)->get('/admin/posts/create');
+
+        $response->assertStatus(200);
+    }
 }

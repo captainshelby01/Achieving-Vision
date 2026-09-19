@@ -58,6 +58,7 @@ RUN php artisan livewire:publish --assets
 # Copy custom Nginx and PHP configurations
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/php.ini /usr/local/etc/php/conf.d/custom.ini
+COPY docker/www.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/start.sh /usr/local/bin/start.sh
 
 RUN chmod +x /usr/local/bin/start.sh
