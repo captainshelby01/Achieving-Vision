@@ -8,6 +8,32 @@
     <title>{{ $title ?? 'Achieving Vision — Practical Guidance to Build & Finish Your Vision' }}</title>
     <meta name="description" content="{{ $description ?? 'Achieving Vision gives ambitious dreamers everywhere the practical guidance to take big ideas from inspiration to finished reality.' }}">
 
+    <!-- OpenGraph & Social Cards -->
+    <meta property="og:site_name" content="Achieving Vision">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title ?? 'Achieving Vision — Practical Guidance to Build & Finish Your Vision' }}">
+    <meta property="og:description" content="{{ $description ?? 'Achieving Vision gives ambitious dreamers everywhere the practical guidance to take big ideas from inspiration to finished reality.' }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title ?? 'Achieving Vision' }}">
+    <meta name="twitter:description" content="{{ $description ?? 'Achieving Vision gives ambitious dreamers everywhere the practical guidance to take big ideas from inspiration to finished reality.' }}">
+
+    <!-- Google Analytics (GA4) -->
+    @if(env('GOOGLE_ANALYTICS_ID'))
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+        </script>
+    @endif
+
+    <!-- Google AdSense Script -->
+    @if(env('GOOGLE_ADSENSE_CLIENT_ID'))
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ env('GOOGLE_ADSENSE_CLIENT_ID') }}" crossorigin="anonymous"></script>
+    @endif
+
     <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
