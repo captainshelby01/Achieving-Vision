@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: achieving-vision-web
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: APP_NAME
+        value: "Achieving Vision"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        sync: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: CACHE_STORE
+        value: array
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: BREVO_NEWSLETTER_LIST_ID
+        sync: false
