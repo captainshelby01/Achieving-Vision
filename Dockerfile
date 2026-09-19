@@ -51,6 +51,10 @@ COPY --from=frontend /app/public/build /var/www/html/public/build
 # Install PHP production dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
+# Publish Filament and Livewire frontend assets
+RUN php artisan filament:assets
+RUN php artisan livewire:publish --assets
+
 # Copy custom Nginx and PHP configurations
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/php.ini /usr/local/etc/php/conf.d/custom.ini

@@ -26,6 +26,8 @@ fi
 
 # Cache configuration, routes, and views for optimal performance
 echo "Caching Laravel configuration & routes..."
+php artisan filament:assets || true
+php artisan livewire:publish --assets || true
 php artisan config:cache || true
 php artisan route:cache || true
 php artisan view:cache || true
