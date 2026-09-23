@@ -34,9 +34,10 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ env('GOOGLE_ADSENSE_CLIENT_ID') }}" crossorigin="anonymous"></script>
     @endif
 
-    <!-- Google Fonts Preconnect -->
+    <!-- Google Fonts Preconnect & Parallel Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Vite Styles & Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -44,14 +45,14 @@
     @livewireStyles
     <style>[x-cloak] { display: none !important; }</style>
 </head>
-<body class="bg-[#FBF9F4] text-[#061A40] font-sans antialiased selection:bg-[#EAC435] selection:text-[#061A40] flex flex-col min-h-screen">
+<body class="bg-[#FBF9F4] text-[#061A40] font-sans antialiased selection:bg-[#EAC435] selection:text-[#061A40] flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- Header Navigation -->
     <header class="sticky top-0 z-50 bg-[#FBF9F4]/95 backdrop-blur-md border-b border-[#E5DFC9]/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Wordmark Logo -->
             <a href="{{ route('home') }}" class="group flex items-center gap-2">
-                <span class="font-display font-semibold text-2xl sm:text-3xl tracking-tight text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
+                <span class="font-display font-semibold text-xl sm:text-2xl md:text-3xl tracking-tight text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
                     Achieving Vision
                 </span>
             </a>

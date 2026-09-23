@@ -43,11 +43,11 @@
 
         <!-- Accessible Category Pills Bar with Scroll Gradient Hint -->
         <div class="relative">
-            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
                 <button 
                     wire:click="clearFilters" 
                     aria-pressed="{{ empty($selectedCategory) && empty($search) ? 'true' : 'false' }}"
-                    class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 {{ empty($selectedCategory) ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
+                    class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 flex-shrink-0 {{ empty($selectedCategory) ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
                 >
                     <span>All Categories</span>
                 </button>
@@ -56,7 +56,7 @@
                     <button 
                         wire:click="selectCategory('{{ $category->slug }}')" 
                         aria-pressed="{{ $selectedCategory === $category->slug ? 'true' : 'false' }}"
-                        class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 {{ $selectedCategory === $category->slug ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
+                        class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 flex-shrink-0 {{ $selectedCategory === $category->slug ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
                     >
                         <span>{{ $category->name }}</span>
                         <span class="px-2 py-0.5 text-[10px] rounded-full {{ $selectedCategory === $category->slug ? 'bg-[#061A40] text-white' : 'bg-[#061A40]/10 text-[#061A40]' }}">
