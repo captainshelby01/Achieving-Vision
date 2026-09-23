@@ -54,9 +54,6 @@
 
             <!-- Mobile Portrait Frame (Open & Clean on White Background) -->
             <div class="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto overflow-hidden bg-white pt-6 flex items-end justify-center">
-                <div class="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-widest text-[#061A40]/30 pointer-events-none">
-                    FIG. 01 &bull; OGHALE
-                </div>
                 <img 
                     src="{{ asset('images/oghale-editorial.jpg') }}" 
                     alt="" 
@@ -140,11 +137,6 @@
                 <!-- Center Portrait Column: Minimal, Monochromatic & Art-Directed -->
                 <div class="col-span-4 relative flex items-end justify-center overflow-hidden min-h-full bg-white">
                     
-                    <!-- Figure Label -->
-                    <div class="absolute top-5 right-6 font-mono text-[10px] uppercase tracking-widest text-[#061A40]/30 z-20 pointer-events-none">
-                        FIG. 01 &bull; OGHALE
-                    </div>
-
                     <!-- Subtle Horizontal Distortion Hairlines across lower torso -->
                     <div class="absolute inset-x-0 bottom-20 h-px bg-[#061A40]/[0.08] z-20 pointer-events-none"></div>
                     <div class="absolute inset-x-0 bottom-32 h-px bg-[#061A40]/[0.05] z-20 pointer-events-none"></div>

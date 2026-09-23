@@ -253,11 +253,21 @@
                     </ul>
                 </div>
 
-                <!-- Quick Newsletter Signup -->
-                <div class="md:col-span-4">
-                    <h4 class="font-display text-base font-semibold text-white mb-2">The Inner Circle</h4>
-                    <p class="text-white/70 text-xs mb-4">Weekly actionable guidance delivered straight to your inbox.</p>
-                    <livewire:newsletter-form source="footer" />
+                <!-- The Inner Circle Editorial Dispatch Callout -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="font-display text-base font-semibold text-white">The Inner Circle</h4>
+                    <p class="text-white/70 text-xs sm:text-sm leading-relaxed font-sans">
+                        Weekly actionable ideas, reflections, and frameworks on building and finishing meaningful work.
+                    </p>
+                    <div class="pt-1">
+                        <a 
+                            href="{{ route('newsletter') }}" 
+                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[8px] bg-[#EAC435] text-[#061A40] text-xs font-semibold hover:bg-[#ebd061] transition-all focus:outline-none focus:ring-2 focus:ring-[#EAC435]/50 shadow-sm"
+                        >
+                            <span>Join the Dispatch</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 

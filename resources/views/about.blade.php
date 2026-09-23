@@ -203,11 +203,5 @@
         </div>
     </section>
 
-    <!-- Dedicated Newsletter Section -->
-    <section class="py-16 bg-[#FBF9F4]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <livewire:newsletter-form source="about_page_bottom" />
-        </div>
-    </section>
-
 </x-layouts.app>
+
