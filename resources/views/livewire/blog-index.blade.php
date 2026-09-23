@@ -1,90 +1,133 @@
-<!-- Article Library & Livewire Search Section -->
-<div id="article-library" class="space-y-8 scroll-mt-24">
+<!-- Calm Editorial Article Archive (Inspired by Khenpo Sodargye Editorial Archive + Achieving Vision Brand Identity) -->
+<div id="article-library" class="max-w-5xl mx-auto py-8 sm:py-12 scroll-mt-20">
     
-    <!-- Header with Result Count & Search -->
-    <div class="space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#E5DFC9]">
-            <div>
-                <div class="flex items-center gap-3">
-                    <h2 class="font-display font-semibold text-2xl sm:text-3xl text-[#061A40]">
-                        Article Library
-                    </h2>
-                    
-                    <!-- Result Count Badge -->
-                    <span class="px-3 py-1 rounded-full bg-[#061A40]/10 text-[#061A40] text-xs font-semibold">
-                        Showing {{ $posts->total() }} {{ Str::plural('article', $posts->total()) }}
-                    </span>
-
-                    <!-- Livewire Loading State -->
-                    <span wire:loading class="text-xs text-[#2D7DD2] font-semibold animate-pulse">
-                        Updating...
-                    </span>
-                </div>
-                <p class="font-sans text-sm text-[#061A40]/70 mt-1">
-                    Search and filter by topic to find practical guides and study notes.
-                </p>
-            </div>
-
-            <!-- Accessible Search Input -->
-            <div class="relative min-w-[280px] sm:min-w-[340px]">
-                <label for="article-search" class="sr-only">Search articles by keyword</label>
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#061A40]/40">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                </div>
-                <input 
-                    id="article-search"
-                    type="search" 
-                    wire:model.live.debounce.300ms="search" 
-                    placeholder="Search articles by keyword..." 
-                    class="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E5DFC9] rounded-xl text-sm text-[#061A40] placeholder-[#061A40]/40 focus:outline-none focus:ring-2 focus:ring-[#EAC435] focus:border-transparent transition-all shadow-sm"
-                />
-            </div>
+    <!-- Archive Header -->
+    <header class="border-b border-[#061A40]/15 pb-10 mb-10">
+        <div class="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#2D7DD2]">
+            <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
+            <span>Achieving Vision Journal</span>
         </div>
+        <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] tracking-tight text-[#061A40]">
+            Ideas for building and finishing meaningful work.
+        </h1>
+        <p class="mt-5 max-w-2xl font-sans text-base sm:text-lg leading-relaxed text-[#061A40]/75">
+            Practical guides, reflections, and active research for ambitious dreamers turning big vision into finished reality.
+        </p>
+    </header>
 
-        <!-- Accessible Category Pills Bar with Scroll Gradient Hint -->
-        <div class="relative">
+    <!-- Top Featured Guide (Shown on Page 1 when no search/filters are active) -->
+    @if($featuredPost && empty($search) && empty($selectedCategory))
+        <section class="border-b border-[#061A40]/15 pb-12 mb-12">
+            <article class="p-8 sm:p-12 bg-white border border-[#061A40]/10 rounded-[8px] space-y-6 shadow-sm group hover:border-[#2D7DD2]/40 transition-colors">
+                <div class="flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 font-sans font-semibold uppercase tracking-[0.14em] text-[#2D7DD2]">
+                        <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
+                        <span>Featured Guide</span>
+                        @if($featuredPost->categories->first())
+                            <span>&bull;</span>
+                            <span>{{ $featuredPost->categories->first()->name }}</span>
+                        @endif
+                    </div>
+                    <span class="font-sans text-[#061A40]/55">{{ $featuredPost->reading_time_min ?? 4 }} min read</span>
+                </div>
+                
+                <h2 class="font-display font-normal text-3xl sm:text-4xl lg:text-5xl text-[#061A40] leading-tight group-hover:text-[#2D7DD2] transition-colors">
+                    <a href="{{ route('blog.show', $featuredPost->slug) }}" class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40]">
+                        {{ $featuredPost->title }}
+                    </a>
+                </h2>
+                
+                <p class="font-sans text-base sm:text-lg text-[#061A40]/75 leading-relaxed max-w-3xl">
+                    {{ $featuredPost->excerpt }}
+                </p>
+
+                <div class="pt-4 border-t border-[#061A40]/10 flex items-center justify-between text-xs text-[#061A40]/60">
+                    <div class="flex items-center gap-2">
+                        <span class="font-medium text-[#061A40]">By {{ $featuredPost->author?->name ?? 'Oghale' }}</span>
+                        <span>&bull;</span>
+                        <span>{{ $featuredPost->published_at?->format('M d, Y') ?? 'Recent' }}</span>
+                    </div>
+                    <a href="{{ route('blog.show', $featuredPost->slug) }}" class="font-sans font-semibold text-xs uppercase tracking-[0.14em] text-[#2D7DD2] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        <span>Read Featured Guide</span>
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </article>
+        </section>
+    @endif
+
+    <!-- Category Tabs & Search Controls Band -->
+    <div class="space-y-6 mb-10">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#061A40]/10">
+            
+            <!-- Category Navigation Tabs -->
             <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
-                <button 
-                    wire:click="clearFilters" 
-                    aria-pressed="{{ empty($selectedCategory) && empty($search) ? 'true' : 'false' }}"
-                    class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 flex-shrink-0 {{ empty($selectedCategory) ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
+                <button
+                    wire:click="clearCategory"
+                    aria-pressed="{{ empty($selectedCategory) ? 'true' : 'false' }}"
+                    class="px-4 py-2 text-xs font-semibold rounded-[8px] transition-colors whitespace-nowrap flex items-center gap-1.5 flex-shrink-0 {{ empty($selectedCategory) ? 'bg-[#061A40] text-white shadow-sm' : 'bg-white border border-[#061A40]/15 text-[#061A40]/70 hover:bg-[#FBF9F4]' }}"
                 >
-                    <span>All Categories</span>
+                    <span>All Articles</span>
+                    <span class="opacity-70">({{ $totalPublishedPosts }})</span>
                 </button>
 
                 @foreach($categories as $category)
-                    <button 
-                        wire:click="selectCategory('{{ $category->slug }}')" 
+                    <button
+                        wire:click="selectCategory('{{ $category->slug }}')"
                         aria-pressed="{{ $selectedCategory === $category->slug ? 'true' : 'false' }}"
-                        class="px-4 py-2 text-xs font-semibold rounded-full transition-all whitespace-nowrap flex items-center gap-2 flex-shrink-0 {{ $selectedCategory === $category->slug ? 'bg-[#EAC435] text-[#061A40] shadow-sm' : 'bg-white border border-[#E5DFC9] text-[#061A40]/80 hover:bg-[#F5F1E8]' }}"
+                        class="px-4 py-2 text-xs font-semibold rounded-[8px] transition-colors whitespace-nowrap flex items-center gap-1.5 flex-shrink-0 {{ $selectedCategory === $category->slug ? 'bg-[#061A40] text-white shadow-sm' : 'bg-white border border-[#061A40]/15 text-[#061A40]/70 hover:bg-[#FBF9F4]' }}"
                     >
                         <span>{{ $category->name }}</span>
-                        <span class="px-2 py-0.5 text-[10px] rounded-full {{ $selectedCategory === $category->slug ? 'bg-[#061A40] text-white' : 'bg-[#061A40]/10 text-[#061A40]' }}">
-                            {{ $category->posts_count }}
-                        </span>
+                        <span class="opacity-70">({{ $category->posts_count }})</span>
                     </button>
                 @endforeach
             </div>
 
-            <!-- Active Filter Chips Bar -->
+            <!-- Search Field -->
+            <div class="relative min-w-[260px] sm:min-w-[320px]">
+                <label for="article-search" class="sr-only">Search articles by keyword</label>
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#061A40]/40">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input
+                    id="article-search"
+                    type="search"
+                    autocomplete="off"
+                    wire:model.live.debounce.300ms="search"
+                    placeholder="Search articles & guides..."
+                    class="w-full pl-9 pr-4 py-2.5 rounded-[8px] border border-[#061A40]/20 bg-white text-xs sm:text-sm text-[#061A40] placeholder:text-[#061A40]/40 focus:outline-none focus:border-[#2D7DD2] focus:ring-2 focus:ring-[#2D7DD2]/20 transition-colors shadow-sm"
+                />
+            </div>
+        </div>
+
+        <!-- Metric & Active Filter Chips Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+            <div class="font-sans text-[#061A40]/70 font-medium">
+                @if($posts->total() > 0)
+                    Showing {{ $posts->firstItem() }}–{{ $posts->lastItem() }} of {{ $posts->total() }} {{ Str::plural('article', $posts->total()) }}
+                @else
+                    No articles found
+                @endif
+            </div>
+
             @if(!empty($selectedCategory) || !empty($search))
-                <div class="pt-3 flex items-center gap-2 text-xs text-[#061A40]/70">
-                    <span class="font-semibold">Active Filters:</span>
+                <div class="flex items-center gap-2 flex-wrap text-xs">
+                    <span class="font-semibold text-[#061A40]/70">Active Filters:</span>
                     @if(!empty($selectedCategory))
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold">
-                            Category: {{ $categories->firstWhere('slug', $selectedCategory)?->name }}
-                            <button wire:click="selectCategory('')" class="hover:text-[#061A40]">&times;</button>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold">
+                            <span>Category: {{ $categories->firstWhere('slug', $selectedCategory)?->name }}</span>
+                            <button wire:click="clearCategory" aria-label="Remove category filter" class="hover:text-[#061A40]">&times;</button>
                         </span>
                     @endif
 
                     @if(!empty($search))
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold">
-                            Search: "{{ $search }}"
-                            <button wire:click="$set('search', '')" class="hover:text-[#061A40]">&times;</button>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold">
+                            <span>Search: "{{ $search }}"</span>
+                            <button wire:click="clearSearch" aria-label="Clear search" class="hover:text-[#061A40]">&times;</button>
                         </span>
                     @endif
 
-                    <button wire:click="clearFilters" class="text-xs text-[#2D7DD2] font-semibold underline hover:text-[#061A40] ml-2">
+                    <button wire:click="clearFilters" class="text-[#2D7DD2] underline font-semibold hover:text-[#061A40] ml-2">
                         Clear all
                     </button>
                 </div>
@@ -92,78 +135,70 @@
         </div>
     </div>
 
-    <!-- Article Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Editorial Article Rows List -->
+    <div wire:loading.class="opacity-50" wire:target="search,selectCategory,clearFilters,clearCategory" class="divide-y divide-[#061A40]/10 transition-opacity">
         @forelse($posts as $post)
-            <article class="bg-white border border-[#E5DFC9] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#2D7DD2]/40 transition-all flex flex-col justify-between group">
-                
-                <!-- Card Header Image Container Placeholder -->
-                <div class="bg-[#061A40] h-40 p-5 flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(#EAC435_1px,transparent_1px)] [background-size:16px_16px] opacity-15"></div>
+            <article class="group py-8 sm:py-10 first:pt-0">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-start">
                     
-                    <div class="relative z-10 flex items-center justify-between">
-                        <span class="badge-type bg-[#EAC435] text-[#061A40]">
-                            {{ $post->categories->first()?->name ?? 'PRACTICAL GUIDE' }}
-                        </span>
-
-                        <span class="inline-flex items-center gap-1 text-[11px] text-white/80 font-medium bg-white/10 px-2.5 py-0.5 rounded-full backdrop-blur-sm">
-                            <svg class="w-3 h-3 text-[#EAC435]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <span>{{ $post->reading_time_min ?? 3 }} MIN READ</span>
-                        </span>
+                    <!-- Left: Published Date & Reading Time -->
+                    <div class="sm:col-span-3 font-sans text-xs uppercase tracking-[0.12em] text-[#061A40]/55 space-y-1">
+                        <time datetime="{{ $post->published_at?->toDateString() }}" class="block font-medium text-[#061A40]/80">
+                            {{ $post->published_at?->format('M d, Y') ?? 'Recent' }}
+                        </time>
+                        <p class="text-[11px]">
+                            {{ $post->reading_time_min ?? 3 }} min read
+                        </p>
                     </div>
 
-                    <div class="relative z-10">
-                        <span class="font-display italic text-sm text-white/90 line-clamp-1">
-                            {{ $post->title }}
-                        </span>
-                    </div>
-                </div>
+                    <!-- Center: Categories, Fraunces Title, Excerpt -->
+                    <div class="sm:col-span-8 space-y-2.5">
+                        <div class="flex flex-wrap gap-2">
+                            @foreach($post->categories as $category)
+                                <span class="font-sans text-xs font-semibold uppercase tracking-[0.12em] text-[#2D7DD2]">
+                                    {{ $category->name }}
+                                </span>
+                            @endforeach
+                        </div>
 
-                <!-- Card Content Body -->
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <h3 class="font-display font-semibold text-xl text-[#061A40] group-hover:text-[#2D7DD2] transition-colors leading-snug">
-                            <a href="{{ route('blog.show', $post->slug) }}">
+                        <h2 class="font-display font-normal text-2xl sm:text-3xl text-[#061A40] leading-snug">
+                            <a href="{{ route('blog.show', $post->slug) }}" class="transition-colors group-hover:text-[#2D7DD2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40]">
                                 {{ $post->title }}
                             </a>
-                        </h3>
+                        </h2>
 
-                        <p class="font-sans text-sm text-[#061A40]/75 leading-relaxed line-clamp-3">
+                        <p class="font-sans text-sm sm:text-base leading-relaxed text-[#061A40]/75 max-w-2xl">
                             {{ $post->excerpt }}
                         </p>
                     </div>
 
-                    <!-- Card Footer -->
-                    <div class="pt-4 border-t border-[#E5DFC9]/60 flex items-center justify-between text-xs text-[#061A40]/60">
-                        <span>{{ $post->published_at?->format('M d, Y') ?? 'Recent' }}</span>
-                        
-                        <a href="{{ route('blog.show', $post->slug) }}" class="font-semibold text-[#2D7DD2] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            <span>Read article</span>
-                            <span>&rarr;</span>
+                    <!-- Right: Directional Link Arrow -->
+                    <div class="sm:col-span-1 hidden sm:flex justify-end pt-1">
+                        <a href="{{ route('blog.show', $post->slug) }}" aria-hidden="true" class="font-sans text-sm font-semibold text-[#2D7DD2] group-hover:translate-x-1 transition-transform">
+                            &rarr;
                         </a>
                     </div>
-                </div>
 
+                </div>
             </article>
         @empty
-            <div class="col-span-full bg-white border border-[#E5DFC9] rounded-2xl p-12 text-center">
-                <div class="w-12 h-12 rounded-full bg-[#EAC435]/20 text-[#061A40] flex items-center justify-center mx-auto mb-4 font-display font-bold text-xl">!</div>
-                <h4 class="font-display font-semibold text-lg text-[#061A40] mb-2">No Articles Found</h4>
-                <p class="text-sm text-[#061A40]/70 max-w-md mx-auto mb-6">We couldn't find any published articles matching your current filter criteria.</p>
-                
-                <!-- Fixed Single wire:click clearFilters Button -->
-                <button wire:click="clearFilters" class="btn-primary text-xs py-2 px-5">
-                    Clear Filters & Reset
-                </button>
+            <div class="py-16 text-center space-y-4">
+                <p class="font-display italic text-2xl text-[#061A40]">No articles found matching your criteria.</p>
+                <p class="font-sans text-sm text-[#061A40]/70 max-w-md mx-auto">Try clearing your active filters or searching for different keywords.</p>
+                <div class="pt-2">
+                    <button wire:click="clearFilters" class="btn-primary text-xs py-2 px-5">
+                        Clear Filters & View All
+                    </button>
+                </div>
             </div>
         @endforelse
     </div>
 
     <!-- Pagination -->
     @if($posts->hasPages())
-        <div class="pt-6">
+        <nav aria-label="Article pagination" class="pt-10 border-t border-[#061A40]/10 mt-10">
             {{ $posts->links() }}
-        </div>
+        </nav>
     @endif
 
 </div>

@@ -30,6 +30,18 @@ class BlogIndex extends Component
         $this->resetPage();
     }
 
+    public function clearCategory(): void
+    {
+        $this->selectedCategory = '';
+        $this->resetPage();
+    }
+
+    public function clearSearch(): void
+    {
+        $this->search = '';
+        $this->resetPage();
+    }
+
     public function clearFilters(): void
     {
         $this->reset(['search', 'selectedCategory']);
@@ -38,31 +50,45 @@ class BlogIndex extends Component
 
     public function render()
     {
-        $categories = Category::withCount(['posts' => function ($query) {
-            $query->published();
-        }])->get();
+        $totalPublishedPosts = Post::query()->published()->count();
+
+        $categories = Category::query()
+            ->withCount(['posts' => function ($query) {
+                $query->published();
+            }])
+            ->having('posts_count', '>', 0)
+            ->orderBy('name')
+            ->get();
 
         $postsQuery = Post::query()->published()->with(['categories', 'tags', 'author']);
 
-        if (!empty($this->search)) {
-            $postsQuery->where(function ($query) {
-                $query->where('title', 'like', '%' . $this->search . '%')
-                      ->orWhere('excerpt', 'like', '%' . $this->search . '%')
-                      ->orWhere('content', 'like', '%' . $this->search . '%');
+        if (filled($this->search)) {
+            $term = '%' . trim($this->search) . '%';
+            $postsQuery->where(function ($query) use ($term) {
+                $query->where('title', 'like', $term)
+                      ->orWhere('excerpt', 'like', $term);
             });
         }
 
-        if (!empty($this->selectedCategory)) {
+        if (filled($this->selectedCategory)) {
             $postsQuery->whereHas('categories', function ($query) {
                 $query->where('slug', $this->selectedCategory);
             });
         }
 
-        $posts = $postsQuery->orderBy('published_at', 'desc')->paginate(9);
+        // Feature the newest article if not searching or filtering by category on page 1
+        $featuredPost = null;
+        if (empty($this->search) && empty($this->selectedCategory) && $this->getPage() === 1) {
+            $featuredPost = Post::query()->published()->with(['categories', 'author'])->orderBy('published_at', 'desc')->first();
+        }
+
+        $posts = $postsQuery->orderBy('published_at', 'desc')->paginate(10);
 
         return view('livewire.blog-index', [
             'posts' => $posts,
             'categories' => $categories,
+            'featuredPost' => $featuredPost,
+            'totalPublishedPosts' => $totalPublishedPosts,
         ]);
     }
 }
