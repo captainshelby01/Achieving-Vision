@@ -53,10 +53,12 @@ class BlogIndex extends Component
         $totalPublishedPosts = Post::query()->published()->count();
 
         $categories = Category::query()
+            ->whereHas('posts', function ($query) {
+                $query->published();
+            })
             ->withCount(['posts' => function ($query) {
                 $query->published();
             }])
-            ->having('posts_count', '>', 0)
             ->orderBy('name')
             ->get();
 
