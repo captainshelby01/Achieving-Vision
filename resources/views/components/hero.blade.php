@@ -42,16 +42,16 @@
             <!-- Mobile Headline Stacks -->
             <div class="space-y-3 select-none" aria-hidden="true">
                 <div class="flex items-baseline justify-between border-b border-[#061A40]/[0.06] pb-2">
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">i'm</span>
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">Oghale</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">i'm</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">Oghale</span>
                 </div>
                 <div class="flex items-baseline justify-between border-b border-[#061A40]/[0.06] pb-2">
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">and i</span>
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">make</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">and i</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">make</span>
                 </div>
                 <div class="flex items-baseline justify-between pb-1">
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">ideas</span>
-                    <span class="whitespace-nowrap text-[clamp(2.35rem,9.5vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">work.</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">ideas</span>
+                    <span class="whitespace-nowrap text-[clamp(1.95rem,8.8vw,4.25rem)] font-medium tracking-[-0.06em] leading-[0.85] text-[#061A40]">work.</span>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
                     class="w-full h-auto max-h-[340px] sm:max-h-[400px] object-contain object-bottom grayscale contrast-125 brightness-95"
                     loading="eager"
                 />
-                <div class="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
             </div>
 
             <!-- Mobile Micro Narrative & CTA -->
@@ -104,33 +104,33 @@
             </div>
 
             <!-- Balanced 3-Column Editorial Grid: Left Stack | Portrait | Right Stack -->
-            <div class="grid grid-cols-12 items-stretch min-h-[580px] xl:min-h-[640px]">
+            <div class="grid grid-cols-12 items-stretch lg:h-[calc(100vh-10rem)] lg:min-h-[500px] lg:max-h-[580px] xl:max-h-[640px]">
                 
                 <!-- Left Typography Column -->
-                <div class="col-span-4 flex flex-col justify-between p-8 lg:p-10 border-r border-[#061A40]/10 z-10">
+                <div class="col-span-4 flex flex-col justify-between p-6 sm:p-8 lg:p-7 xl:p-9 border-r border-[#061A40]/10 z-10 text-right items-end">
                     
-                    <!-- Left Stack Typography -->
-                    <div class="space-y-8 lg:space-y-10 select-none" aria-hidden="true">
+                    <!-- Left Stack Typography: Distributed Vertically across 3 tiers -->
+                    <div class="w-full flex-1 flex flex-col justify-between select-none pb-4 text-right items-end" aria-hidden="true">
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 i'm
                             </span>
                         </div>
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 and i
                             </span>
                         </div>
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 ideas
                             </span>
                         </div>
                     </div>
 
                     <!-- Left Micro-Annotation -->
-                    <div class="pt-6 mt-6 border-t border-[#061A40]/10">
-                        <p class="text-xs sm:text-sm text-[#061A40]/75 leading-relaxed font-sans max-w-xs">
+                    <div class="w-full pt-4 border-t border-[#061A40]/10 flex justify-end">
+                        <p class="text-xs sm:text-[13px] text-[#061A40]/75 leading-relaxed font-sans max-w-xs text-right">
                             Practical guidance for ambitious people building, learning, and following through on their vision.
                         </p>
                     </div>
@@ -138,14 +138,13 @@
                 </div>
 
                 <!-- Center Portrait Column: Minimal, Monochromatic & Art-Directed -->
-                <div class="col-span-4 relative flex items-end justify-center overflow-hidden min-h-full bg-white">
+                <div class="col-span-4 relative flex items-end justify-center overflow-hidden h-full bg-white">
                     
                     <!-- Subtle Horizontal Distortion Hairlines across lower torso -->
-                    <div class="absolute inset-x-0 bottom-20 h-px bg-[#061A40]/[0.08] z-20 pointer-events-none"></div>
-                    <div class="absolute inset-x-0 bottom-32 h-px bg-[#061A40]/[0.05] z-20 pointer-events-none"></div>
+                    <div class="absolute inset-x-0 bottom-16 h-px bg-[#061A40]/[0.06] z-20 pointer-events-none"></div>
 
                     <!-- Portrait Image (Static, Non-Interactive Art) -->
-                    <div class="relative w-full max-w-[380px] xl:max-w-[420px] h-full flex items-end justify-center z-10">
+                    <div class="relative w-full max-w-[360px] xl:max-w-[420px] h-full flex items-end justify-center z-10">
                         <img 
                             src="{{ asset('images/oghale-editorial.jpg') }}" 
                             alt="" 
@@ -153,40 +152,40 @@
                             width="420"
                             height="600"
                             fetchpriority="high"
-                            class="w-full h-auto max-h-[520px] xl:max-h-[600px] object-contain object-bottom grayscale contrast-125 brightness-95"
+                            class="h-full w-auto max-w-full max-h-[480px] lg:max-h-[520px] xl:max-h-[600px] object-contain object-bottom grayscale contrast-125 brightness-95"
                             loading="eager"
                         />
                     </div>
 
                     <!-- Seamless Baseline Blend -->
-                    <div class="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
+                    <div class="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
 
                 </div>
 
                 <!-- Right Typography Column -->
-                <div class="col-span-4 flex flex-col justify-between p-8 lg:p-10 border-l border-[#061A40]/10 z-10">
+                <div class="col-span-4 flex flex-col justify-between p-6 sm:p-8 lg:p-7 xl:p-9 border-l border-[#061A40]/10 z-10">
                     
-                    <!-- Right Stack Typography -->
-                    <div class="space-y-8 lg:space-y-10 select-none" aria-hidden="true">
+                    <!-- Right Stack Typography: Distributed Vertically across 3 tiers -->
+                    <div class="flex-1 flex flex-col justify-between select-none pb-4" aria-hidden="true">
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 Oghale
                             </span>
                         </div>
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 make
                             </span>
                         </div>
                         <div>
-                            <span class="block whitespace-nowrap text-[clamp(3.25rem,5.2vw,5.75rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
+                            <span class="block whitespace-nowrap text-[clamp(3.15rem,4.75vw,5.5rem)] font-medium tracking-[-0.06em] leading-[0.84] text-[#061A40]">
                                 work.
                             </span>
                         </div>
                     </div>
 
                     <!-- Right Discreet Editorial CTA -->
-                    <div class="pt-6 mt-6 border-t border-[#061A40]/10 flex items-center justify-between">
+                    <div class="pt-4 border-t border-[#061A40]/10 flex items-center justify-between">
                         <a 
                             href="#article-library" 
                             class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-semibold text-[#061A40] hover:text-[#2D7DD2] group transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-2"

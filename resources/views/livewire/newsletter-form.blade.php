@@ -34,7 +34,7 @@
                         type="submit"
                         wire:loading.attr="disabled"
                         wire:target="subscribe"
-                        class="px-4 py-2.5 rounded-xl bg-[#EAC435] text-[#061A40] font-sans font-bold text-xs uppercase tracking-wider hover:bg-[#ebd061] transition-all disabled:opacity-60 flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap active:scale-98"
+                        class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#EAC435] text-[#061A40] font-sans font-bold text-xs uppercase tracking-wider hover:bg-[#ebd061] transition-all disabled:opacity-60 flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap active:scale-98"
                     >
                         <span wire:loading.remove wire:target="subscribe" class="flex items-center gap-1.5">
                             <span>Subscribe</span>
