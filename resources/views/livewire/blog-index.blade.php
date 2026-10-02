@@ -48,7 +48,9 @@
             <div class="relative min-w-[240px] sm:min-w-[280px]">
                 <label for="article-search" class="sr-only">Search articles by keyword</label>
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#061A40]/40">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-search w-3.5 h-3.5" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
                 </div>
                 <input
                     id="article-search"
