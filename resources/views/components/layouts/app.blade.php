@@ -220,23 +220,23 @@
     </script>
 
     <!-- Main Content Area -->
-    <main class="flex-grow">
+    <main class="flex-grow [&>*:last-child]:border-b-0">
         {{ $slot }}
     </main>
 
     <!-- Curved Footer Edge Transition (Replacing Straight Line) -->
-    <div class="w-full overflow-hidden leading-none bg-white -mb-[1px]" aria-hidden="true">
-        <svg class="relative block w-full h-8 sm:h-12 md:h-16 text-[#061A40]" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor">
-            <path d="M0,40 C480,0 960,0 1440,40 L1440,60 L0,60 Z"></path>
+    <div class="w-full overflow-hidden leading-none bg-white -mb-[1px] pointer-events-none select-none" aria-hidden="true">
+        <svg class="relative block w-full h-8 sm:h-12 md:h-16 lg:h-20 text-[#061A40]" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="currentColor">
+            <path d="M0,48 C360,6 1080,6 1440,48 L1440,64 L0,64 Z"></path>
         </svg>
     </div>
 
     <!-- Footer -->
     <footer class="bg-[#061A40] text-white pt-8 sm:pt-12 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10 items-start">
                 <!-- Brand Bio -->
-                <div class="md:col-span-5">
+                <div class="lg:col-span-4">
                     <a href="{{ route('home') }}" class="font-display font-semibold text-2xl text-white tracking-tight inline-block mb-4">
                         Achieving Vision
                     </a>
@@ -255,7 +255,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="md:col-span-3">
+                <div class="lg:col-span-3">
                     <h4 class="font-display text-base font-semibold text-white mb-4">Explore Platform</h4>
                     <ul class="space-y-3 text-sm text-white/70">
                         <li><a href="{{ route('home') }}" class="hover:text-[#EAC435] transition-colors">Home</a></li>
@@ -266,20 +266,31 @@
                     </ul>
                 </div>
 
-                <!-- The Inner Circle Editorial Dispatch Callout -->
-                <div class="md:col-span-4 space-y-3">
-                    <h4 class="font-display text-base font-semibold text-white">The Inner Circle</h4>
-                    <p class="text-white/70 text-xs sm:text-sm leading-relaxed font-sans">
-                        Weekly actionable ideas, reflections, and frameworks on building and finishing meaningful work.
-                    </p>
-                    <div class="pt-1">
-                        <a 
-                            href="{{ route('newsletter') }}" 
-                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[8px] bg-[#EAC435] text-[#061A40] text-xs font-semibold hover:bg-[#ebd061] transition-all focus:outline-none focus:ring-2 focus:ring-[#EAC435]/50 shadow-sm"
-                        >
-                            <span>Join the Dispatch</span>
-                            <span>&rarr;</span>
-                        </a>
+                <!-- Distinct Newsletter Subscription Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/[0.04] border border-white/12 hover:border-[#EAC435]/40 rounded-2xl p-6 sm:p-7 shadow-xl relative overflow-hidden backdrop-blur-xs transition-colors">
+                        <!-- Top Accent Highlight Stripe -->
+                        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#2D7DD2] via-[#82FF9E] to-[#EAC435]" aria-hidden="true"></div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EAC435]/15 text-[#EAC435] text-[11px] font-mono tracking-wide uppercase font-semibold border border-[#EAC435]/30">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#EAC435] animate-pulse"></span>
+                                    Weekly Dispatch
+                                </span>
+                            </div>
+
+                            <div>
+                                <h4 class="font-display font-semibold text-xl text-white tracking-tight">The Inner Circle</h4>
+                                <p class="text-white/70 text-xs sm:text-sm leading-relaxed font-sans mt-1.5">
+                                    Weekly actionable ideas, reflections, and frameworks on building and finishing meaningful work.
+                                </p>
+                            </div>
+
+                            <div class="pt-1">
+                                <livewire:newsletter-form source="footer" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

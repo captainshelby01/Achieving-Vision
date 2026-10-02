@@ -1,51 +1,60 @@
 @if($source === 'footer')
-    <!-- Compact Dark Footer Newsletter Form -->
-    <div class="w-full space-y-3">
+    <!-- Distinct Dark Footer Newsletter Form -->
+    <div class="w-full">
         @if($subscribed)
-            <div class="p-3.5 bg-[#82FF9E]/20 border border-[#82FF9E]/40 text-white rounded-[8px] font-sans text-xs flex items-center gap-2.5">
-                <span class="w-4 h-4 rounded-full bg-[#82FF9E] text-[#061A40] flex items-center justify-center font-bold text-[10px] flex-shrink-0">&check;</span>
-                <span>Thank you! You have joined The Inner Circle.</span>
+            <div class="p-4 bg-[#82FF9E]/15 border border-[#82FF9E]/40 text-white rounded-xl font-sans text-xs sm:text-sm flex items-start gap-3 shadow-inner">
+                <span class="w-5 h-5 rounded-full bg-[#82FF9E] text-[#061A40] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">&check;</span>
+                <div class="space-y-0.5">
+                    <strong class="font-semibold block text-white text-sm">Welcome to The Inner Circle!</strong>
+                    <p class="text-xs text-white/75">We've saved your spot. Look out for practical guidance and frameworks in your inbox.</p>
+                </div>
             </div>
         @else
             <form wire:submit.prevent="subscribe" class="space-y-2.5">
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <label for="newsletter-name-{{ $source }}" class="sr-only">Your name</label>
-                    <input
-                        id="newsletter-name-{{ $source }}"
-                        name="name"
-                        type="text"
-                        wire:model="name"
-                        autocomplete="name"
-                        placeholder="Your name"
-                        class="w-full sm:w-1/3 px-3.5 py-2.5 rounded-[8px] bg-white/10 border border-white/20 text-white placeholder-white/50 text-xs font-sans focus:outline-none focus:border-[#EAC435] focus:ring-1 focus:ring-[#EAC435] transition-colors"
-                    />
-                    <label for="newsletter-email-{{ $source }}" class="sr-only">Email address</label>
-                    <input
-                        id="newsletter-email-{{ $source }}"
-                        name="email"
-                        type="email"
-                        wire:model="email"
-                        autocomplete="email"
-                        placeholder="Your email address"
-                        required
-                        class="w-full sm:w-2/3 px-3.5 py-2.5 rounded-[8px] bg-white/10 border border-white/20 text-white placeholder-white/50 text-xs font-sans focus:outline-none focus:border-[#EAC435] focus:ring-1 focus:ring-[#EAC435] transition-colors"
-                    />
+                    <div class="relative flex-1">
+                        <label for="newsletter-email-{{ $source }}" class="sr-only">Email address</label>
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/40">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <input
+                            id="newsletter-email-{{ $source }}"
+                            name="email"
+                            type="email"
+                            wire:model="email"
+                            autocomplete="email"
+                            placeholder="Enter your email address"
+                            required
+                            class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/45 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#EAC435] focus:ring-2 focus:ring-[#EAC435]/30 transition-all shadow-inner"
+                        />
+                    </div>
                     <button
                         type="submit"
                         wire:loading.attr="disabled"
                         wire:target="subscribe"
-                        class="px-4 py-2.5 rounded-[8px] bg-[#EAC435] text-[#061A40] font-sans font-semibold text-xs whitespace-nowrap hover:bg-[#dfb728] transition-colors disabled:opacity-60 flex items-center justify-center gap-1.5 shadow-sm"
+                        class="px-4 py-2.5 rounded-xl bg-[#EAC435] text-[#061A40] font-sans font-bold text-xs uppercase tracking-wider hover:bg-[#ebd061] transition-all disabled:opacity-60 flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap active:scale-98"
                     >
-                        <span wire:loading.remove wire:target="subscribe">Subscribe</span>
-                        <span wire:loading wire:target="subscribe">Joining…</span>
+                        <span wire:loading.remove wire:target="subscribe" class="flex items-center gap-1.5">
+                            <span>Subscribe</span>
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </span>
+                        <span wire:loading wire:target="subscribe" class="flex items-center gap-1.5">
+                            <svg class="animate-spin h-3.5 w-3.5 text-[#061A40]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            <span>Joining…</span>
+                        </span>
                     </button>
                 </div>
-                @error('name')
-                    <p class="text-[11px] text-rose-300 text-left" role="alert">{{ $message }}</p>
-                @enderror
                 @error('email')
-                    <p class="text-[11px] text-rose-300 text-left" role="alert">{{ $message }}</p>
+                    <p class="text-[11px] text-rose-300 text-left font-sans" role="alert">{{ $message }}</p>
                 @enderror
+                <div class="flex items-center text-[11px] text-white/50 pt-0.5 font-sans">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-3 h-3 text-[#82FF9E]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span>No spam. Unsubscribe anytime.</span>
+                    </span>
+                </div>
             </form>
         @endif
     </div>

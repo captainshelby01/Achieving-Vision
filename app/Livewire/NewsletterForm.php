@@ -13,13 +13,13 @@ class NewsletterForm extends Component
 {
     public string $name = '';
     public string $email = '';
-    public string $source = 'website_footer';
+    public string $source = 'footer';
     public bool $subscribed = false;
 
     protected function rules(): array
     {
         return [
-            'name' => $this->source === 'footer' ? 'nullable|string|max:100' : 'required|string|min:2|max:100',
+            'name' => in_array($this->source, ['footer', 'website_footer']) ? 'nullable|string|max:100' : 'required|string|min:2|max:100',
             'email' => 'required|email|max:255',
         ];
     }

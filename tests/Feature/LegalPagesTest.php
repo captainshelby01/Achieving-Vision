@@ -36,7 +36,7 @@ class LegalPagesTest extends TestCase
         $response = $this->get('/newsletter');
 
         $response->assertStatus(200)
-                 ->assertSee('A clearer way forward, once a week.')
+                 ->assertSee('A weekly dispatch delivered to your inbox', false)
                  ->assertSee('What You Can Expect Every Week')
                  ->assertSee('Zero Fluff & Zero Ads', false);
     }
