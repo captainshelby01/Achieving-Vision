@@ -1,7 +1,7 @@
-<div class="bg-white border border-[#E5DFC9] rounded-2xl p-6 sm:p-10 shadow-sm">
+<div class="bg-white border border-[#061A40]/10 rounded-2xl p-6 sm:p-10 shadow-sm">
     @if($submitted)
-        <div class="bg-[#82FF9E]/20 border border-[#82FF9E]/40 rounded-xl p-6 text-center space-y-3">
-            <div class="w-12 h-12 rounded-full bg-[#82FF9E]/40 text-[#061A40] flex items-center justify-center mx-auto text-xl font-bold font-display">
+        <div class="bg-[#82FF9E]/20 border border-[#82FF9E]/50 rounded-xl p-6 text-center space-y-3">
+            <div class="w-12 h-12 rounded-full bg-[#82FF9E] text-[#061A40] flex items-center justify-center mx-auto text-xl font-bold font-display shadow-xs">
                 &check;
             </div>
             <h3 class="font-display font-semibold text-xl text-[#061A40]">
@@ -29,7 +29,7 @@
                     What can we help you with? <span class="text-[#2D7DD2]">*</span>
                 </label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'general' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#E5DFC9] hover:bg-[#FBF9F4]' }}">
+                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'general' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#061A40]/15 hover:bg-slate-50' }}">
                         <input type="radio" wire:model.live="subject_type" value="general" class="text-[#061A40] focus:ring-[#EAC435]">
                         <div class="text-xs font-medium text-[#061A40]">
                             <span class="font-semibold block">General Inquiry</span>
@@ -37,7 +37,7 @@
                         </div>
                     </label>
 
-                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'speaking' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#E5DFC9] hover:bg-[#FBF9F4]' }}">
+                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'speaking' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#061A40]/15 hover:bg-slate-50' }}">
                         <input type="radio" wire:model.live="subject_type" value="speaking" class="text-[#061A40] focus:ring-[#EAC435]">
                         <div class="text-xs font-medium text-[#061A40]">
                             <span class="font-semibold block">Speaking & Keynotes</span>
@@ -45,7 +45,7 @@
                         </div>
                     </label>
 
-                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'books' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#E5DFC9] hover:bg-[#FBF9F4]' }}">
+                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'books' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#061A40]/15 hover:bg-slate-50' }}">
                         <input type="radio" wire:model.live="subject_type" value="books" class="text-[#061A40] focus:ring-[#EAC435]">
                         <div class="text-xs font-medium text-[#061A40]">
                             <span class="font-semibold block">Books & Bulk Orders</span>
@@ -53,7 +53,7 @@
                         </div>
                     </label>
 
-                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'press' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#E5DFC9] hover:bg-[#FBF9F4]' }}">
+                    <label class="flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all {{ $subject_type === 'press' ? 'border-[#061A40] bg-[#061A40]/5 ring-1 ring-[#061A40]' : 'border-[#061A40]/15 hover:bg-slate-50' }}">
                         <input type="radio" wire:model.live="subject_type" value="press" class="text-[#061A40] focus:ring-[#EAC435]">
                         <div class="text-xs font-medium text-[#061A40]">
                             <span class="font-semibold block">Media & Interviews</span>
@@ -75,7 +75,7 @@
                         id="name" 
                         wire:model="name" 
                         placeholder="e.g. Alex Morgan"
-                        class="w-full px-4 py-2.5 rounded-xl border border-[#E5DFC9] bg-[#FBF9F4] text-sm text-[#061A40] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#061A40] transition-colors"
+                        class="w-full px-4 py-2.5 rounded-xl border border-[#061A40]/20 bg-white text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2] transition-colors"
                     />
                     @error('name') <p class="text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
@@ -89,7 +89,7 @@
                         id="email" 
                         wire:model="email" 
                         placeholder="alex@example.com"
-                        class="w-full px-4 py-2.5 rounded-xl border border-[#E5DFC9] bg-[#FBF9F4] text-sm text-[#061A40] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#061A40] transition-colors"
+                        class="w-full px-4 py-2.5 rounded-xl border border-[#061A40]/20 bg-white text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2] transition-colors"
                     />
                     @error('email') <p class="text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
@@ -105,7 +105,7 @@
                     wire:model="message" 
                     rows="5" 
                     placeholder="Please provide details about your project, speaking date, or question..."
-                    class="w-full px-4 py-3 rounded-xl border border-[#E5DFC9] bg-[#FBF9F4] text-sm text-[#061A40] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#061A40] transition-colors resize-y"
+                    class="w-full px-4 py-3 rounded-xl border border-[#061A40]/20 bg-white text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2] transition-colors resize-y"
                 ></textarea>
                 <div class="flex justify-between items-center text-[11px] text-[#061A40]/60">
                     <span>Please write in plain English. No em dashes allowed.</span>

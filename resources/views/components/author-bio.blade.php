@@ -1,5 +1,5 @@
 <!-- Author Bio Box Component (Researcher & Guide Stance) -->
-<div class="my-12 p-8 bg-[#F5F1E8] border border-[#E5DFC9] rounded-2xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-6">
+<div class="my-12 p-8 bg-white border border-[#061A40]/10 rounded-2xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-6">
     <!-- Author Monogram / Avatar Container -->
     <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#061A40] text-white flex-shrink-0 flex items-center justify-center font-display font-bold text-2xl shadow-inner relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(#EAC435_1px,transparent_1px)] [background-size:8px_8px] opacity-20"></div>
@@ -14,6 +14,10 @@
             </h3>
             <span class="badge-type bg-[#EAC435] text-[#061A40] text-[10px]">
                 Author & Guide
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#82FF9E]/30 text-[#061A40] text-[10px] font-bold border border-[#82FF9E]/60 uppercase tracking-wider">
+                <span class="w-1 h-1 rounded-full bg-[#82FF9E]"></span>
+                Active Researcher
             </span>
         </div>
 

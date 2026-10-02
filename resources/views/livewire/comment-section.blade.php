@@ -1,5 +1,5 @@
 <!-- Reader Discussion & Comments Section -->
-<div class="mt-16 pt-12 border-t border-[#E5DFC9] space-y-10">
+<div class="mt-16 pt-12 border-t border-[#061A40]/10 space-y-10">
     
     <!-- Section Header with Count -->
     <div class="flex items-center justify-between">
@@ -12,9 +12,9 @@
     </div>
 
     <!-- Submission Form / Feedback Alert -->
-    <div class="bg-[#F5F1E8] border border-[#E5DFC9] rounded-2xl p-6 sm:p-8 shadow-sm">
+    <div class="bg-white border border-[#061A40]/10 rounded-2xl p-6 sm:p-8 shadow-sm">
         @if($submitted)
-            <div class="p-5 bg-[#82FF9E]/20 border border-[#82FF9E] text-[#061A40] rounded-xl font-medium text-sm text-center">
+            <div class="p-5 bg-[#82FF9E]/20 border border-[#82FF9E]/60 text-[#061A40] rounded-xl font-medium text-sm text-center">
                 Thank you for sharing your thoughts. Your comment has been submitted and will appear once approved by our moderation team.
             </div>
         @else
@@ -35,7 +35,7 @@
                             wire:model="author_name" 
                             placeholder="e.g. Samuel" 
                             required 
-                            class="w-full px-4 py-2.5 bg-white border border-[#E5DFC9] rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#EAC435]"
+                            class="w-full px-4 py-2.5 bg-white border border-[#061A40]/20 rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]"
                         />
                         @error('author_name')
                             <p class="text-xs text-rose-600 mt-1">{{ $message }}</p>
@@ -50,7 +50,7 @@
                             wire:model="author_email" 
                             placeholder="you@example.com" 
                             required 
-                            class="w-full px-4 py-2.5 bg-white border border-[#E5DFC9] rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#EAC435]"
+                            class="w-full px-4 py-2.5 bg-white border border-[#061A40]/20 rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]"
                         />
                         @error('author_email')
                             <p class="text-xs text-rose-600 mt-1">{{ $message }}</p>
@@ -66,7 +66,7 @@
                         rows="4" 
                         placeholder="What stood out to you from this guide?" 
                         required 
-                        class="w-full px-4 py-3 bg-white border border-[#E5DFC9] rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#EAC435]"
+                        class="w-full px-4 py-3 bg-white border border-[#061A40]/20 rounded-xl text-sm text-[#061A40] focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]"
                     ></textarea>
                     @error('content')
                         <p class="text-xs text-rose-600 mt-1">{{ $message }}</p>
@@ -86,7 +86,7 @@
     <!-- Approved Comments List -->
     <div class="space-y-6">
         @forelse($comments as $comment)
-            <div class="bg-white border border-[#E5DFC9] rounded-2xl p-6 shadow-sm space-y-3">
+            <div class="bg-white border border-[#061A40]/10 rounded-2xl p-6 shadow-sm space-y-3">
                 <div class="flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2">
                         <span class="w-7 h-7 rounded-full bg-[#061A40] text-white flex items-center justify-center font-bold text-xs">

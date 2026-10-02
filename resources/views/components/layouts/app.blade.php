@@ -45,10 +45,10 @@
     @livewireStyles
     <style>[x-cloak] { display: none !important; }</style>
 </head>
-<body class="bg-[#FBF9F4] text-[#061A40] font-sans antialiased selection:bg-[#EAC435] selection:text-[#061A40] flex flex-col min-h-screen overflow-x-hidden">
+<body class="bg-white text-[#061A40] font-sans antialiased selection:bg-[#EAC435] selection:text-[#061A40] flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 bg-[#FBF9F4]/95 backdrop-blur-md border-b border-[#E5DFC9]/60">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#061A40]/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Wordmark Logo -->
             <a href="{{ route('home') }}" class="group flex items-center gap-2">
@@ -88,7 +88,7 @@
                 <button 
                     id="mobile-menu-btn"
                     type="button"
-                    class="p-2.5 rounded-lg text-[#061A40] hover:bg-[#E5DFC9]/40 focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]/40 transition active:scale-95" 
+                    class="p-2.5 rounded-lg text-[#061A40] hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#2D7DD2]/40 transition active:scale-95" 
                     aria-label="Toggle Navigation"
                     aria-expanded="false"
                 >
@@ -107,42 +107,42 @@
         <!-- Mobile Navigation Drawer -->
         <div 
             id="mobile-menu-drawer"
-            class="hidden md:hidden bg-[#FBF9F4] border-b border-[#E5DFC9] shadow-2xl px-4 pt-3 pb-6 space-y-3"
+            class="hidden md:hidden bg-white border-b border-[#061A40]/10 shadow-2xl px-4 pt-3 pb-6 space-y-3"
         >
             <div class="flex flex-col space-y-1.5 font-medium text-base">
                 <a 
                     href="{{ route('home') }}" 
-                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('home') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/40' }}"
+                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('home') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-slate-50' }}"
                 >
                     Home
                 </a>
                 <a 
                     href="{{ route('blog.index') }}" 
-                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('blog.*') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/40' }}"
+                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('blog.*') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-slate-50' }}"
                 >
                     Articles & Blog
                 </a>
                 <a 
                     href="{{ route('about') }}" 
-                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('about') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/40' }}"
+                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('about') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-slate-50' }}"
                 >
                     About Oghale
                 </a>
                 <a 
                     href="{{ route('events') }}" 
-                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('events') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/40' }}"
+                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('events') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-slate-50' }}"
                 >
                     Events
                 </a>
                 <a 
                     href="{{ route('contact') }}" 
-                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('contact') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-[#E5DFC9]/40' }}"
+                    class="mobile-nav-link px-3.5 py-3 rounded-lg transition-colors {{ request()->routeIs('contact') ? 'bg-[#2D7DD2]/10 text-[#2D7DD2] font-semibold' : 'text-[#061A40] hover:bg-slate-50' }}"
                 >
                     Contact
                 </a>
             </div>
 
-            <div class="pt-3 border-t border-[#E5DFC9]/60">
+            <div class="pt-3 border-t border-[#061A40]/10">
                 <a 
                     href="{{ route('newsletter') }}" 
                     class="mobile-nav-link btn-primary w-full text-center text-sm py-3.5 justify-center shadow-md font-semibold"
@@ -224,8 +224,15 @@
         {{ $slot }}
     </main>
 
+    <!-- Curved Footer Edge Transition (Replacing Straight Line) -->
+    <div class="w-full overflow-hidden leading-none bg-white -mb-[1px]" aria-hidden="true">
+        <svg class="relative block w-full h-8 sm:h-12 md:h-16 text-[#061A40]" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor">
+            <path d="M0,40 C480,0 960,0 1440,40 L1440,60 L0,60 Z"></path>
+        </svg>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-[#061A40] text-white pt-16 pb-12 border-t border-[#061A40]/20">
+    <footer class="bg-[#061A40] text-white pt-8 sm:pt-12 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
                 <!-- Brand Bio -->
@@ -236,8 +243,14 @@
                     <p class="text-white/70 text-sm leading-relaxed max-w-sm mb-6 font-sans">
                         We help ambitious dreamers everywhere turn the vision they carry into something they actually build and finish. Practical guidance, honest research, zero hype.
                     </p>
-                    <div class="inline-block px-3 py-1 rounded-full bg-[#EAC435]/10 text-[#EAC435] text-xs font-medium border border-[#EAC435]/20">
-                        Tagline: Here's to Achieving Vision
+                    <div class="flex flex-wrap items-center gap-2 mb-6">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[#EAC435]/15 text-[#EAC435] text-xs font-medium border border-[#EAC435]/30">
+                            Tagline: Here's to Achieving Vision
+                        </div>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#82FF9E]/15 text-[#82FF9E] text-xs font-medium border border-[#82FF9E]/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                            <span>Active Research &bull; Updated Weekly</span>
+                        </div>
                     </div>
                 </div>
 

@@ -9,8 +9,11 @@
     <div class="max-w-[1440px] mx-auto border-x border-[#061A40]/10">
         <div class="grid grid-cols-2 md:grid-cols-12 text-[11px] font-mono tracking-wider uppercase border-b border-[#061A40]/10">
             <div class="col-span-1 md:col-span-4 p-3 sm:px-6 flex items-center gap-2.5 border-r border-[#061A40]/10 text-[#061A40]/70">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#061A40]/80 flex-shrink-0"></span>
-                <span class="truncate">Author &bull; Researcher</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-[10px] font-semibold border border-[#82FF9E]/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E] ring-2 ring-[#061A40]/10 animate-pulse"></span>
+                    <span>Active Research</span>
+                </span>
+                <span class="truncate hidden sm:inline">Author &bull; Researcher</span>
             </div>
             <div class="hidden md:flex md:col-span-4 p-3 sm:px-6 items-center justify-center border-r border-[#061A40]/10 font-medium tracking-widest text-[#061A40]">
                 ACHIEVING VISION
@@ -208,21 +211,27 @@
             <!-- Left Statement & Action Card -->
             <div class="lg:col-span-5 p-6 sm:p-10 lg:p-14 lg:border-r border-b lg:border-b-0 border-[#061A40]/10 flex flex-col justify-between space-y-6 sm:space-y-8 bg-white">
                 <div class="space-y-4 sm:space-y-5">
-                    <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#2D7DD2] font-semibold">
-                        <span>// CORE DIRECTIVE</span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#2D7DD2] font-semibold">
+                            <span>// CORE DIRECTIVE</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-[10px] font-bold border border-[#82FF9E]/60 shadow-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                            <span>PRACTICAL EXECUTION</span>
+                        </span>
                     </div>
-                    <h2 class="font-display font-medium text-2xl sm:text-3xl lg:text-[2.5rem] text-[#061A40] leading-[1.12] tracking-tight">
-                        Practical Direction at the Intersection of Vision & Execution.
+                    <h2 class="font-display font-medium text-2xl sm:text-3xl lg:text-[2.35rem] text-[#061A40] leading-[1.12] tracking-tight">
+                        Practical Direction at the Intersection of Vision &amp; Execution.
                     </h2>
                     <p class="text-xs sm:text-base text-[#061A40]/80 leading-relaxed font-sans">
-                        Starting is exciting, but finishing is where transformation happens. We deliver actionable frameworks and honest research so you can carry ideas across the finish line.
+                        Starting is exciting, but finishing is where transformation happens. Join the Inner Circle for one practical idea, reflection, or framework each week to help turn big vision into finished reality.
                     </p>
                 </div>
 
                 <!-- Sub-Hero Interactive CTAs -->
                 <div class="space-y-4 pt-4 border-t border-[#061A40]/10">
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                        <a href="{{ route('newsletter') }}" class="btn-primary text-xs tracking-wider uppercase px-6 py-3 font-semibold text-center w-full sm:w-auto">
+                        <a href="#newsletter-section" class="btn-primary text-xs tracking-wider uppercase px-6 py-3 font-semibold text-center w-full sm:w-auto">
                             Join Inner Circle
                         </a>
                         <a href="{{ route('about') }}" class="btn-secondary text-xs tracking-wider uppercase px-5 py-3 font-semibold text-center w-full sm:w-auto">
@@ -236,18 +245,18 @@
                 </div>
             </div>
 
-            <!-- Right 4-Quadrant Matrix (01 to 04) - Fully Interactive Grid Cards -->
+            <!-- Right 4-Quadrant Category Matrix (01 to 04) - Direct Links to Categories -->
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 bg-white">
                 
-                <!-- Quadrant 01 -->
+                <!-- Category Quadrant 01: Execution & Systems -->
                 <a 
-                    href="#article-library" 
-                    class="p-6 sm:p-8 lg:p-10 border-b sm:border-r border-[#061A40]/10 hover:bg-[#FBF9F4] transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
+                    href="{{ route('blog.index', ['selectedCategory' => 'execution-systems']) }}" 
+                    class="p-6 sm:p-8 lg:p-10 border-b sm:border-r border-[#061A40]/10 hover:bg-slate-50 transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
                 >
                     <div class="space-y-2.5 sm:space-y-3.5">
                         <div class="flex items-center justify-between">
                             <h3 class="font-display font-medium text-base sm:text-lg text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
-                                Execution Frameworks
+                                Execution &amp; Systems
                             </h3>
                             <span class="font-mono text-xs font-semibold text-[#061A40]/40 group-hover:text-[#061A40]">
                                 01
@@ -258,20 +267,20 @@
                         </p>
                     </div>
                     <div class="pt-3 border-t border-[#061A40]/10 text-[11px] font-mono text-[#2D7DD2] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        <span>Actionable Guides</span>
+                        <span>Explore Category</span>
                         <span aria-hidden="true">&rarr;</span>
                     </div>
                 </a>
 
-                <!-- Quadrant 02 -->
+                <!-- Category Quadrant 02: Mindset & Vision -->
                 <a 
-                    href="#article-library" 
-                    class="p-6 sm:p-8 lg:p-10 border-b border-[#061A40]/10 hover:bg-[#FBF9F4] transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
+                    href="{{ route('blog.index', ['selectedCategory' => 'mindset-vision']) }}" 
+                    class="p-6 sm:p-8 lg:p-10 border-b border-[#061A40]/10 hover:bg-slate-50 transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
                 >
                     <div class="space-y-2.5 sm:space-y-3.5">
                         <div class="flex items-center justify-between">
                             <h3 class="font-display font-medium text-base sm:text-lg text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
-                                Mindset & Identity
+                                Mindset &amp; Vision
                             </h3>
                             <span class="font-mono text-xs font-semibold text-[#061A40]/40 group-hover:text-[#061A40]">
                                 02
@@ -282,15 +291,39 @@
                         </p>
                     </div>
                     <div class="pt-3 border-t border-[#061A40]/10 text-[11px] font-mono text-[#2D7DD2] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        <span>Transformation</span>
+                        <span>Explore Category</span>
                         <span aria-hidden="true">&rarr;</span>
                     </div>
                 </a>
 
-                <!-- Quadrant 03 -->
+                <!-- Category Quadrant 03: Overcoming Limits -->
                 <a 
-                    href="#article-library" 
-                    class="p-6 sm:p-8 lg:p-10 border-b sm:border-b-0 sm:border-r border-[#061A40]/10 hover:bg-[#FBF9F4] transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
+                    href="{{ route('blog.index', ['selectedCategory' => 'overcoming-limits']) }}" 
+                    class="p-6 sm:p-8 lg:p-10 border-b sm:border-b-0 sm:border-r border-[#061A40]/10 hover:bg-slate-50 transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
+                >
+                    <div class="space-y-2.5 sm:space-y-3.5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-display font-medium text-base sm:text-lg text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
+                                Overcoming Limits
+                            </h3>
+                            <span class="font-mono text-xs font-semibold text-[#061A40]/40 group-hover:text-[#061A40]">
+                                03
+                            </span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-[#061A40]/75 leading-relaxed font-sans">
+                            Breaking through glass ceilings, building resilience under resistance, and pushing past the 80% completion gap.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-[#061A40]/10 text-[11px] font-mono text-[#2D7DD2] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        <span>Explore Category</span>
+                        <span aria-hidden="true">&rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Category Quadrant 04: Active Research -->
+                <a 
+                    href="{{ route('blog.index', ['selectedCategory' => 'active-research']) }}" 
+                    class="p-6 sm:p-8 lg:p-10 hover:bg-slate-50 transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
                 >
                     <div class="space-y-2.5 sm:space-y-3.5">
                         <div class="flex items-center justify-between">
@@ -298,7 +331,7 @@
                                 Active Research
                             </h3>
                             <span class="font-mono text-xs font-semibold text-[#061A40]/40 group-hover:text-[#061A40]">
-                                03
+                                04
                             </span>
                         </div>
                         <p class="text-xs sm:text-sm text-[#061A40]/75 leading-relaxed font-sans">
@@ -306,31 +339,7 @@
                         </p>
                     </div>
                     <div class="pt-3 border-t border-[#061A40]/10 text-[11px] font-mono text-[#2D7DD2] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        <span>Case Studies</span>
-                        <span aria-hidden="true">&rarr;</span>
-                    </div>
-                </a>
-
-                <!-- Quadrant 04 -->
-                <a 
-                    href="{{ route('about') }}" 
-                    class="p-6 sm:p-8 lg:p-10 hover:bg-[#FBF9F4] transition-colors group flex flex-col justify-between space-y-4 sm:space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#061A40] focus-visible:outline-offset-[-2px]"
-                >
-                    <div class="space-y-2.5 sm:space-y-3.5">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-display font-medium text-base sm:text-lg text-[#061A40] group-hover:text-[#2D7DD2] transition-colors">
-                                Books & Publications
-                            </h3>
-                            <span class="font-mono text-xs font-semibold text-[#061A40]/40 group-hover:text-[#061A40]">
-                                04
-                            </span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-[#061A40]/75 leading-relaxed font-sans">
-                            Long-form books, monographs, and keynote curriculum designed to support dreamers worldwide over years, not days.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-[#061A40]/10 text-[11px] font-mono text-[#2D7DD2] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        <span>Published Works</span>
+                        <span>Explore Category</span>
                         <span aria-hidden="true">&rarr;</span>
                     </div>
                 </a>

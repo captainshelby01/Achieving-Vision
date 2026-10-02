@@ -1,20 +1,29 @@
 <x-layouts.app title="The Inner Circle Newsletter — Achieving Vision" description="Subscribe to The Inner Circle for one actionable idea, reflection, or framework every week to help turn the vision you carry into work you can build and finish.">
 
-    <!-- Newsletter Dedicated Hero & 2-Column Section -->
-    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Newsletter Dedicated Hero & 2-Column Section with Subtle Wavy Treatment -->
+    <section class="relative py-16 md:py-24 bg-white border-b border-[#061A40]/10 overflow-hidden">
+        <!-- Subtle Wavy Shape Decorative Background -->
+        <div class="w-full overflow-hidden leading-none absolute top-0 inset-x-0 pointer-events-none" aria-hidden="true">
+            <svg class="block w-full h-10 sm:h-14 md:h-20" viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,40 C320,80 580,10 860,50 C1140,90 1320,30 1440,45 L1440,100 L0,100 Z" fill="#2D7DD2" fill-opacity="0.05"></path>
+                <path d="M0,55 C260,15 520,75 800,35 C1080,-5 1300,65 1440,30 L1440,100 L0,100 Z" fill="#82FF9E" fill-opacity="0.12"></path>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <livewire:newsletter-form source="dedicated_newsletter_page" />
         </div>
     </section>
 
     <!-- What You Can Expect (3 Benefit Pillars) -->
-    <section class="py-16 md:py-24 bg-[#FBF9F4] border-b border-[#061A40]/10">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
             <div class="text-center space-y-3 max-w-2xl mx-auto">
-                <span class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-[#2D7DD2]">
-                    Editorial Standards
-                </span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-xs font-semibold border border-[#82FF9E]/60 shadow-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                    <span>Editorial Standards</span>
+                </div>
                 <h2 class="font-display font-medium text-3xl sm:text-4xl text-[#061A40]">
                     What You Can Expect Every Week
                 </h2>
@@ -25,7 +34,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm">
+                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm hover:border-[#2D7DD2]/40 transition-colors">
                     <div class="w-10 h-10 rounded-[6px] bg-[#061A40] text-[#EAC435] flex items-center justify-center font-display font-bold text-lg">
                         1
                     </div>
@@ -37,8 +46,8 @@
                     </p>
                 </div>
 
-                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm">
-                    <div class="w-10 h-10 rounded-[6px] bg-[#061A40] text-[#EAC435] flex items-center justify-center font-display font-bold text-lg">
+                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm hover:border-[#2D7DD2]/40 transition-colors">
+                    <div class="w-10 h-10 rounded-[6px] bg-[#061A40] text-[#82FF9E] flex items-center justify-center font-display font-bold text-lg">
                         2
                     </div>
                     <h3 class="font-display font-medium text-xl text-[#061A40]">
@@ -49,7 +58,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm">
+                <div class="bg-white border border-[#061A40]/10 rounded-[8px] p-7 space-y-4 shadow-sm hover:border-[#2D7DD2]/40 transition-colors">
                     <div class="w-10 h-10 rounded-[6px] bg-[#061A40] text-[#EAC435] flex items-center justify-center font-display font-bold text-lg">
                         3
                     </div>

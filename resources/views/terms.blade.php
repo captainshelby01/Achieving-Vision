@@ -1,12 +1,18 @@
 <x-layouts.app title="Terms of Service — Achieving Vision" description="Review the terms and conditions governing the use of Achieving Vision articles, books, and resources.">
 
     <!-- Terms Header -->
-    <section class="py-16 md:py-24 bg-[#FBF9F4] border-b border-[#E5DFC9]/80">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
-                <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
-                Terms &bull; Editorial Guidelines
+            <div class="flex flex-wrap items-center gap-2.5">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
+                    Terms &bull; Editorial Guidelines
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-xs font-semibold border border-[#82FF9E]/60 shadow-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                    <span>Updated 2026</span>
+                </div>
             </div>
 
             <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#061A40] leading-[1.12] tracking-tight">
@@ -21,7 +27,7 @@
     </section>
 
     <!-- Terms Content Body -->
-    <section class="py-16 md:py-20 bg-[#FBF9F4]">
+    <section class="py-16 md:py-20 bg-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
             <!-- Section 1 -->

@@ -15,9 +15,9 @@
     --color-saffron: #EAC435;
     --color-steel: #2D7DD2;
     --color-lightgreen: #82FF9E;
-    --color-warm-cream: #FBF9F4;
-    --color-editorial-card: #F5F1E8;
-    --color-editorial-border: #E5DFC9;
+    --color-warm-cream: #FFFFFF;
+    --color-editorial-card: #FFFFFF;
+    --color-editorial-border: #E2E8F0;
 }
 
 @layer components {

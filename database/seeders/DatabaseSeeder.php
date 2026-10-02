@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
         $catMindset = Category::firstOrCreate(['name' => 'Mindset & Vision'], ['slug' => 'mindset-vision', 'description' => 'Overcoming limiting beliefs and cultivating vision.']);
         $catExecution = Category::firstOrCreate(['name' => 'Execution & Systems'], ['slug' => 'execution-systems', 'description' => 'Practical steps for daily follow-through.']);
         $catLimits = Category::firstOrCreate(['name' => 'Overcoming Limits'], ['slug' => 'overcoming-limits', 'description' => 'Breaking through glass ceilings and finishing what you start.']);
+        $catResearch = Category::firstOrCreate(['name' => 'Active Research'], ['slug' => 'active-research', 'description' => 'Field notes, experiments, and active research on human potential and execution.']);
 
         $tagFocus = Tag::firstOrCreate(['name' => 'Focus'], ['slug' => 'focus']);
         $tagHabits = Tag::firstOrCreate(['name' => 'Habits'], ['slug' => 'habits']);

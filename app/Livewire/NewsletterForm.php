@@ -5,26 +5,43 @@ namespace App\Livewire;
 use App\Jobs\SyncSubscriberToBrevoJob;
 use App\Mail\WelcomeNewsletterMail;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class NewsletterForm extends Component
 {
+    public string $name = '';
     public string $email = '';
     public string $source = 'website_footer';
     public bool $subscribed = false;
 
-    protected array $rules = [
-        'email' => 'required|email|max:255',
+    protected function rules(): array
+    {
+        return [
+            'name' => $this->source === 'footer' ? 'nullable|string|max:100' : 'required|string|min:2|max:100',
+            'email' => 'required|email|max:255',
+        ];
+    }
+
+    protected array $messages = [
+        'name.required' => 'Please enter your name.',
+        'name.min' => 'Name must be at least 2 characters.',
+        'email.required' => 'Please enter your email address.',
+        'email.email' => 'Please enter a valid email address.',
     ];
 
     public function subscribe(): void
     {
         $this->validate();
 
-        $subscriber = Subscriber::firstOrCreate(
+        $subscriber = Subscriber::updateOrCreate(
             ['email' => $this->email],
-            ['source' => $this->source, 'is_subscribed' => true]
+            [
+                'name' => !empty($this->name) ? $this->name : null,
+                'source' => $this->source,
+                'is_subscribed' => true,
+            ]
         );
 
         if (!$subscriber->is_subscribed) {
@@ -33,14 +50,20 @@ class NewsletterForm extends Component
 
         // Dispatch async job to sync contact to Brevo
         SyncSubscriberToBrevoJob::dispatch($subscriber->email, [
+            'NAME' => $this->name,
+            'FIRSTNAME' => $this->name,
             'SOURCE' => $this->source,
         ]);
 
         // Send welcome email
-        Mail::to($subscriber->email)->queue(new WelcomeNewsletterMail());
+        try {
+            Mail::to($subscriber->email)->queue(new WelcomeNewsletterMail());
+        } catch (\Throwable $e) {
+            Log::warning('Newsletter welcome email queue failed: ' . $e->getMessage());
+        }
 
         $this->subscribed = true;
-        $this->reset('email');
+        $this->reset(['name', 'email']);
     }
 
     public function render()

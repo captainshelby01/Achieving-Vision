@@ -1,12 +1,18 @@
 <x-layouts.app title="Contact Oghale & Achieving Vision — Inquiries & Speaking" description="Get in touch with author Oghale for speaking engagements, media requests, bulk book orders, or general guidance questions.">
 
     <!-- Contact Header -->
-    <section class="py-16 md:py-24 bg-[#FBF9F4] border-b border-[#E5DFC9]/80">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
-                <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
-                Get In Touch &bull; Connect
+            <div class="flex flex-wrap items-center gap-2.5">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
+                    Get In Touch &bull; Connect
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-xs font-semibold border border-[#82FF9E]/60 shadow-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                    <span>Inquiries & Speaking</span>
+                </div>
             </div>
 
             <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#061A40] leading-[1.12] tracking-tight">
@@ -27,7 +33,7 @@
     </section>
 
     <!-- Main Contact Section (Form + Information Column) -->
-    <section class="py-16 md:py-24 bg-[#FBF9F4] border-b border-[#E5DFC9]/80">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
@@ -49,7 +55,7 @@
                 <div class="lg:col-span-5 space-y-6">
                     
                     <!-- Direct Channels Box -->
-                    <div class="bg-[#F5F1E8] border border-[#E5DFC9] rounded-2xl p-6 sm:p-8 space-y-6">
+                    <div class="bg-white border border-[#061A40]/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
                         <h3 class="font-display font-semibold text-xl text-[#061A40]">
                             Contact Details
                         </h3>

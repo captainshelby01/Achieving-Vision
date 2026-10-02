@@ -1,12 +1,18 @@
 <x-layouts.app title="Events & Speaking Engagements — Achieving Vision" description="Join author Oghale for upcoming live masterclasses, webinars, and speaking events on vision execution and finishing what you start.">
 
     <!-- Events Page Header -->
-    <section class="py-16 md:py-24 bg-[#FBF9F4] border-b border-[#E5DFC9]/80">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
-                <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
-                Live &bull; Online Masterclasses &bull; Speaking
+            <div class="flex flex-wrap items-center gap-2.5">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061A40]/5 border border-[#061A40]/10 text-[#061A40] text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-[#EAC435]"></span>
+                    Live &bull; Online Masterclasses &bull; Speaking
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#82FF9E]/25 text-[#061A40] text-xs font-semibold border border-[#82FF9E]/60 shadow-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#82FF9E]"></span>
+                    <span>Live Sessions</span>
+                </div>
             </div>
 
             <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#061A40] leading-[1.12] tracking-tight">
@@ -27,10 +33,10 @@
     </section>
 
     <!-- Upcoming Events Schedule List -->
-    <section class="py-16 md:py-20 bg-[#FBF9F4] border-b border-[#E5DFC9]/80">
+    <section class="py-16 md:py-20 bg-white border-b border-[#061A40]/10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
             
-            <div class="flex items-center justify-between pb-4 border-b border-[#E5DFC9]">
+            <div class="flex items-center justify-between pb-4 border-b border-[#061A40]/10">
                 <div>
                     <h2 class="font-display font-semibold text-2xl sm:text-3xl text-[#061A40]">
                         Upcoming Schedule
@@ -48,7 +54,7 @@
             <!-- Event Cards Grid -->
             <div class="space-y-6">
                 @forelse($events as $event)
-                    <article class="bg-[#F5F1E8] border border-[#E5DFC9] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-6 group">
+                    <article class="bg-white border border-[#061A40]/10 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-6 group">
                         
                         <!-- Left: Date & Time Pill -->
                         <div class="flex md:flex-col items-center justify-center bg-[#061A40] text-white p-4 rounded-xl min-w-[120px] text-center flex-shrink-0 shadow-inner">
@@ -108,8 +114,8 @@
 
                     </article>
                 @empty
-                    <div class="bg-white border border-[#E5DFC9] rounded-2xl p-12 text-center">
-                        <div class="w-12 h-12 rounded-full bg-[#EAC435]/20 text-[#061A40] flex items-center justify-center mx-auto mb-4 font-display font-bold text-xl">!</div>
+                    <div class="bg-white border border-[#061A40]/10 rounded-2xl p-12 text-center shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-[#82FF9E]/30 text-[#061A40] flex items-center justify-center mx-auto mb-4 font-display font-bold text-xl border border-[#82FF9E]/60">&bull;</div>
                         <h4 class="font-display font-semibold text-lg text-[#061A40] mb-2">No Upcoming Events Right Now</h4>
                         <p class="text-sm text-[#061A40]/70 max-w-md mx-auto mb-6">
                             New speaking dates and masterclasses will be announced shortly. Join the inner circle to get early access.
@@ -125,9 +131,9 @@
     </section>
 
     <!-- Speaking Inquiries Box (For Conferences & Workshops) -->
-    <section class="py-16 md:py-24 bg-[#F5F1E8] border-b border-[#E5DFC9]">
+    <section class="py-16 md:py-24 bg-white border-b border-[#061A40]/10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white border border-[#E5DFC9] rounded-3xl p-8 sm:p-12 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="bg-white border border-[#061A40]/10 rounded-3xl p-8 sm:p-12 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                 
                 <div class="md:col-span-8 space-y-4">
                     <span class="badge-type bg-[#2D7DD2]/10 text-[#2D7DD2]">Book Oghale for Speaking</span>

@@ -1,7 +1,7 @@
 @props(['position' => 'in-article', 'slotId' => null])
 
 <!-- Google AdSense / Sponsor Slot Container (Zero Layout Shift CLS Protected) -->
-<div class="my-10 p-6 bg-[#F5F1E8]/70 border border-[#E5DFC9] rounded-2xl text-center relative overflow-hidden">
+<div class="my-10 p-6 bg-white border border-[#061A40]/10 rounded-2xl text-center relative overflow-hidden shadow-xs">
     <div class="text-[10px] font-sans font-bold uppercase tracking-widest text-[#061A40]/40 mb-3">
         Advertisement &bull; Partner Resource
     </div>
@@ -19,7 +19,7 @@
         </script>
     @else
         <!-- Curated Sponsorship Placeholder -->
-        <div class="min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center border border-dashed border-[#E5DFC9] rounded-xl bg-white/60 p-4">
+        <div class="min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center border border-dashed border-[#061A40]/15 rounded-xl bg-slate-50/50 p-4">
             <span class="font-display italic text-sm text-[#061A40]/60">
                 Achieving Vision Curated Sponsorship Space
             </span>

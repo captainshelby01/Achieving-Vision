@@ -19,6 +19,16 @@ class BlogIndex extends Component
         'selectedCategory' => ['except' => ''],
     ];
 
+    public function mount(): void
+    {
+        if (request()->has('category') && empty($this->selectedCategory)) {
+            $this->selectedCategory = (string) request()->query('category');
+        }
+        if (request()->has('selectedCategory') && empty($this->selectedCategory)) {
+            $this->selectedCategory = (string) request()->query('selectedCategory');
+        }
+    }
+
     public function updatingSearch(): void
     {
         $this->resetPage();
@@ -53,13 +63,10 @@ class BlogIndex extends Component
         $totalPublishedPosts = Post::query()->published()->count();
 
         $categories = Category::query()
-            ->whereHas('posts', function ($query) {
-                $query->published();
-            })
             ->withCount(['posts' => function ($query) {
                 $query->published();
             }])
-            ->orderBy('name')
+            ->orderBy('id')
             ->get();
 
         $postsQuery = Post::query()->published()->with(['categories', 'tags', 'author']);
@@ -78,18 +85,11 @@ class BlogIndex extends Component
             });
         }
 
-        // Feature the newest article if not searching or filtering by category on page 1
-        $featuredPost = null;
-        if (empty($this->search) && empty($this->selectedCategory) && $this->getPage() === 1) {
-            $featuredPost = Post::query()->published()->with(['categories', 'author'])->orderBy('published_at', 'desc')->first();
-        }
-
-        $posts = $postsQuery->orderBy('published_at', 'desc')->paginate(10);
+        $posts = $postsQuery->orderBy('published_at', 'desc')->paginate(15);
 
         return view('livewire.blog-index', [
             'posts' => $posts,
             'categories' => $categories,
-            'featuredPost' => $featuredPost,
             'totalPublishedPosts' => $totalPublishedPosts,
         ]);
     }
